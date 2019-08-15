@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>museval &mdash; museval 0.2.0 documentation</title>
+  <title>museval &mdash; museval api 0.3.0 documentation</title>
   
 
   
@@ -17,45 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="museval 0.2.0 documentation" href="../index.html"/>
-        <link rel="up" title="Module code" href="index.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="../index.html" class="icon icon-home"> museval
+            <a href="../index.html" class="icon icon-home"> museval api
           
 
           
@@ -65,7 +58,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.3.0
               </div>
             
           
@@ -106,17 +99,18 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">museval</a>
+          <a href="../index.html">museval api</a>
         
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -146,8 +140,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -159,8 +151,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for museval</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">metrics</span>
+<span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">metrics</span>
 <span class="kn">import</span> <span class="nn">simplejson</span> <span class="k">as</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">op</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -172,9 +163,14 @@
 <span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">import</span> <span class="nn">musdb</span>
 <span class="kn">import</span> <span class="nn">museval</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.io.json</span> <span class="k">import</span> <span class="n">json_normalize</span>
+<span class="kn">from</span> <span class="nn">.aggregate</span> <span class="k">import</span> <span class="n">MethodsStore</span><span class="p">,</span> <span class="n">EvalStore</span><span class="p">,</span> <span class="n">json2df</span>
+<span class="kn">from</span> <span class="nn">.version</span> <span class="k">import</span> <span class="n">_version</span>
 
 
-<div class="viewcode-block" id="EvalStore"><a class="viewcode-back" href="../museval.html#museval.EvalStore">[docs]</a><span class="k">class</span> <span class="nc">EvalStore</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="TrackStore"><a class="viewcode-back" href="../museval.html#museval.TrackStore">[docs]</a><span class="k">class</span> <span class="nc">TrackStore</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluation Track Data Storage Object</span>
 
@@ -188,22 +184,31 @@
 <span class="sd">        Track sample rate</span>
 <span class="sd">    scores : Dict</span>
 <span class="sd">        Nested Dictionary of all scores</span>
+<span class="sd">    frames_agg : function or string</span>
+<span class="sd">        aggregation function for frames, defaults to `&#39;median&#39; = `np.nanmedian`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">EvalStore</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">track_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TrackStore</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hop</span> <span class="o">=</span> <span class="n">hop</span>
-
+        <span class="k">if</span> <span class="n">frames_agg</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span>
+        <span class="k">elif</span> <span class="n">frames_agg</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span> <span class="o">=</span> <span class="n">frames_agg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">track_name</span> <span class="o">=</span> <span class="n">track_name</span>
         <span class="n">schema_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="n">museval</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;musdb.schema.json&#39;</span>
         <span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scores</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="s1">&#39;targets&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;museval_version&#39;</span><span class="p">:</span> <span class="n">_version</span>
         <span class="p">}</span>
 
-<div class="viewcode-block" id="EvalStore.add_target"><a class="viewcode-back" href="../museval.html#museval.EvalStore.add_target">[docs]</a>    <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_name</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<div class="viewcode-block" id="TrackStore.add_target"><a class="viewcode-back" href="../museval.html#museval.TrackStore.add_target">[docs]</a>    <span class="k">def</span> <span class="nf">add_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_name</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;add target to scores Dictionary</span>
 
 <span class="sd">        Parameters</span>
@@ -217,7 +222,7 @@
             <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target_name</span><span class="p">,</span>
             <span class="s1">&#39;frames&#39;</span><span class="p">:</span> <span class="p">[]</span>
         <span class="p">}</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;SDR&#39;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;SDR&#39;</span><span class="p">]):</span>
             <span class="n">frame_data</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hop</span><span class="p">,</span>
                 <span class="s1">&#39;duration&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">win</span><span class="p">,</span>
@@ -234,7 +239,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;add target to scores Dictionary</span>
+        <span class="sd">&quot;&quot;&quot;return track scores in json format</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        ----------</span>
@@ -248,26 +253,37 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">json_string</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return track scores as pandas dataframe</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        df : DataFrame</span>
+<span class="sd">            pandas dataframe object of track scores</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">json2df</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_name</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Print the mean values instead of all frames</span>
+        <span class="sd">&quot;&quot;&quot;Print the frames_aggregated values instead of all frames</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        ----------</span>
 <span class="sd">        str</span>
-<span class="sd">            mean values of all target metrics</span>
+<span class="sd">            frames_aggreagted values of all target metrics</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;targets&#39;</span><span class="p">]:</span>
-            <span class="n">out</span> <span class="o">+=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=&gt; &quot;</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;==&gt; &quot;</span>
             <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SDR&#39;</span><span class="p">,</span> <span class="s1">&#39;SIR&#39;</span><span class="p">,</span> <span class="s1">&#39;ISR&#39;</span><span class="p">,</span> <span class="s1">&#39;SAR&#39;</span><span class="p">]:</span>
                 <span class="n">out</span> <span class="o">+=</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> \
-                    <span class="s2">&quot;</span><span class="si">%0.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span>
-                        <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;metrics&#39;</span><span class="p">][</span><span class="n">metric</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;frames&#39;</span><span class="p">]]</span>
-                    <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;dB, &quot;</span>
+                    <span class="s2">&quot;</span><span class="si">{:&gt;8.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;metrics&#39;</span><span class="p">][</span><span class="n">metric</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;frames&#39;</span><span class="p">]])</span>
+                    <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span>
             <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">return</span> <span class="n">out</span>
 
-<div class="viewcode-block" id="EvalStore.validate"><a class="viewcode-back" href="../museval.html#museval.EvalStore.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TrackStore.validate"><a class="viewcode-back" href="../museval.html#museval.TrackStore.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate scores against `musdb.schema`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">validate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scores</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span></div>
 
@@ -276,10 +292,14 @@
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">D</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">precision</span><span class="p">)))</span></div>
+            <span class="k">return</span> <span class="n">D</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">precision</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="TrackStore.save"><a class="viewcode-back" href="../museval.html#museval.TrackStore.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">)</span></div></div>
 
 
-<span class="k">def</span> <span class="nf">_load_track_estimates</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">estimates_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_load_track_estimates</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">estimates_dir</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;load estimates from disk instead of processing&quot;&quot;&quot;</span>
     <span class="n">user_results</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">track_estimate_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
@@ -288,14 +308,14 @@
         <span class="n">track</span><span class="o">.</span><span class="n">name</span>
     <span class="p">)</span>
     <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span>
-        <span class="n">track_estimate_dir</span> <span class="o">+</span> <span class="s1">&#39;/*.wav&#39;</span>
+        <span class="n">track_estimate_dir</span> <span class="o">+</span> <span class="s1">&#39;/*.&#39;</span> <span class="o">+</span> <span class="n">ext</span>
     <span class="p">):</span>
 
         <span class="n">target_name</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span>
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
         <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">target_audio</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+            <span class="n">target_audio</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
                 <span class="n">target</span><span class="p">,</span>
                 <span class="n">always_2d</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
@@ -340,14 +360,17 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    scores : EvalStore</span>
+<span class="sd">    scores : TrackStore</span>
 <span class="sd">        scores object that holds the framewise and global evaluation scores.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">reference</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">estimates</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="n">data</span> <span class="o">=</span> <span class="n">EvalStore</span><span class="p">(</span><span class="n">win</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="n">hop</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">TrackStore</span><span class="p">(</span>
+        <span class="n">win</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="n">hop</span><span class="p">,</span>
+        <span class="n">track_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">reference_dir</span><span class="p">)</span>
+    <span class="p">)</span>
 
     <span class="n">global_rate</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">reference_glob</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reference_dir</span><span class="p">,</span> <span class="s1">&#39;*.wav&#39;</span><span class="p">)</span>
@@ -404,40 +427,34 @@
     <span class="n">dataset</span><span class="p">,</span>
     <span class="n">estimates_dir</span><span class="p">,</span>
     <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run musdb.run for the purpose of evaluation of musdb estimate dir</span>
+    <span class="sd">&quot;&quot;&quot;Run evaluation of musdb estimate dir</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    dataset : DB(object)</span>
-<span class="sd">        Musdb Database object.</span>
+<span class="sd">        MUSDB18 Database object.</span>
 <span class="sd">    estimates_dir : str</span>
 <span class="sd">        Path to estimates folder.</span>
 <span class="sd">    output_dir : str</span>
 <span class="sd">        Output folder where evaluation json files are stored.</span>
-<span class="sd">    *args</span>
-<span class="sd">        Variable length argument list for `musdb.run()`.</span>
-<span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments for `musdb.run()`.</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        estimate file extension, defaults to `wav`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># create a new musdb instance for estimates with the same file structure</span>
-    <span class="n">est</span> <span class="o">=</span> <span class="n">musdb</span><span class="o">.</span><span class="n">DB</span><span class="p">(</span><span class="n">root_dir</span><span class="o">=</span><span class="n">estimates_dir</span><span class="p">,</span> <span class="n">is_wav</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># load all estimates track_names</span>
-    <span class="n">est_tracks</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">load_mus_tracks</span><span class="p">()</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="n">musdb</span><span class="o">.</span><span class="n">DB</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">estimates_dir</span><span class="p">,</span> <span class="n">is_wav</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1"># get a list of track names</span>
-    <span class="n">tracknames</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">est_tracks</span><span class="p">]</span>
-    <span class="c1"># load only musdb tracks where we have estimate tracks</span>
-    <span class="n">tracks</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_mus_tracks</span><span class="p">(</span><span class="n">tracknames</span><span class="o">=</span><span class="n">tracknames</span><span class="p">)</span>
-    <span class="c1"># wrap the estimate loader</span>
-    <span class="n">run_fun</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
-        <span class="n">_load_track_estimates</span><span class="p">,</span>
-        <span class="n">estimates_dir</span><span class="o">=</span><span class="n">estimates_dir</span><span class="p">,</span>
-        <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span>
-    <span class="p">)</span>
-    <span class="c1"># evaluate tracks</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_fun</span><span class="p">,</span> <span class="n">estimates_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tracks</span><span class="o">=</span><span class="n">tracks</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="n">tracks_to_be_estimated</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">est</span><span class="o">.</span><span class="n">tracks</span><span class="p">]</span>
 
+    <span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">track</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tracks_to_be_estimated</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">_load_track_estimates</span><span class="p">(</span>
+            <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+            <span class="n">estimates_dir</span><span class="o">=</span><span class="n">estimates_dir</span><span class="p">,</span>
+            <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="eval_mus_track"><a class="viewcode-back" href="../museval.html#museval.eval_mus_track">[docs]</a><span class="k">def</span> <span class="nf">eval_mus_track</span><span class="p">(</span>
     <span class="n">track</span><span class="p">,</span>
@@ -466,7 +483,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    scores : EvalStore</span>
+<span class="sd">    scores : TrackStore</span>
 <span class="sd">        scores object that holds the framewise and global evaluation scores.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -487,7 +504,7 @@
         <span class="c1"># append this target name to the list of target to evaluate</span>
         <span class="n">eval_targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-    <span class="n">data</span> <span class="o">=</span> <span class="n">EvalStore</span><span class="p">(</span><span class="n">win</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="n">hop</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">TrackStore</span><span class="p">(</span><span class="n">win</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="n">hop</span><span class="p">,</span> <span class="n">track_name</span><span class="o">=</span><span class="n">track</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="c1"># check if vocals and accompaniment is among the targets</span>
     <span class="n">has_acc</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">eval_targets</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;vocals&#39;</span><span class="p">,</span> <span class="s1">&#39;accompaniment&#39;</span><span class="p">])</span>
@@ -526,6 +543,12 @@
                 <span class="n">target_name</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                 <span class="n">values</span><span class="o">=</span><span class="n">values</span>
             <span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">has_acc</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="ne">UserWarning</span><span class="p">(</span>
+                <span class="s2">&quot;Incorrect usage of BSSeval : at least two estimates must be provided. Target score will be empty.&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
 
     <span class="c1"># add vocal accompaniment targets later</span>
     <span class="k">if</span> <span class="n">has_acc</span><span class="p">:</span>
@@ -680,9 +703,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -691,11 +712,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fabian-Robert Stöter.
+        &copy; Copyright 2019, Fabian-Robert Stoeter
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -708,37 +729,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.2.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
