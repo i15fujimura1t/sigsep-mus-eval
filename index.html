@@ -161,84 +161,6 @@
 </div>
 <div class="section" id="module-museval">
 <span id="api-documentation"></span><h1>API documentation<a class="headerlink" href="#module-museval" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="museval.TrackStore">
-<em class="property">class </em><code class="sig-prename descclassname">museval.</code><code class="sig-name descname">TrackStore</code><span class="sig-paren">(</span><em class="sig-param">track_name</em>, <em class="sig-param">win=1</em>, <em class="sig-param">hop=1</em>, <em class="sig-param">frames_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#TrackStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.TrackStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluation Storage that holds the scores for all frames of one track</p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>track_name</strong><span class="classifier">string</span></dt><dd><p>name of track, required.</p>
-</dd>
-<dt><strong>win</strong><span class="classifier">float</span></dt><dd><p>evaluation window duration in seconds, default to 1s</p>
-</dd>
-<dt><strong>hop</strong><span class="classifier">float</span></dt><dd><p>hop length in seconds, defaults to 1s</p>
-</dd>
-<dt><strong>scores</strong><span class="classifier">Dict</span></dt><dd><p>Nested Dictionary of all scores</p>
-</dd>
-<dt><strong>frames_agg</strong><span class="classifier">function or string</span></dt><dd><p>aggregation function for frames, defaults to <cite>‘median’ = `np.nanmedian</cite></p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="method">
-<dt id="museval.TrackStore.add_target">
-<code class="sig-name descname">add_target</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">target_name</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#TrackStore.add_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.TrackStore.add_target" title="Permalink to this definition">¶</a></dt>
-<dd><p>add scores of target to the data store</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>target_name</strong><span class="classifier">str</span></dt><dd><p>name of target to be added to list of targets</p>
-</dd>
-<dt><strong>values</strong><span class="classifier">List(Dict)</span></dt><dd><p>List of framewise data entries, see <cite>musdb.schema.json</cite></p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="museval.TrackStore.json">
-<em class="property">property </em><code class="sig-name descname">json</code><a class="headerlink" href="#museval.TrackStore.json" title="Permalink to this definition">¶</a></dt>
-<dd><p>formats the track scores as json string</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>json_string</strong><span class="classifier">str</span></dt><dd><p>json dump of the scores dictionary</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="museval.TrackStore.df">
-<em class="property">property </em><code class="sig-name descname">df</code><a class="headerlink" href="#museval.TrackStore.df" title="Permalink to this definition">¶</a></dt>
-<dd><p>return track scores as pandas dataframe</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">DataFrame</span></dt><dd><p>pandas dataframe object of track scores</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="museval.TrackStore.validate">
-<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#TrackStore.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.TrackStore.validate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validate scores against <cite>musdb.schema</cite></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="museval.TrackStore.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#TrackStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.TrackStore.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>Saved the track scores as json format</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="function">
 <dt id="museval.eval_dir">
 <code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_dir</code><span class="sig-paren">(</span><em class="sig-param">reference_dir</em>, <em class="sig-param">estimates_dir</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">mode='v4'</em>, <em class="sig-param">win=1.0</em>, <em class="sig-param">hop=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_dir" title="Permalink to this definition">¶</a></dt>
@@ -573,19 +495,305 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 
 </div>
 <span class="target" id="module-museval.aggregate"></span><dl class="class">
-<dt id="museval.aggregate.EvalStore">
-<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">EvalStore</code><span class="sig-paren">(</span><em class="sig-param">frames_agg='median'</em>, <em class="sig-param">tracks_agg='median'</em>, <em class="sig-param">tracks=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluation Storage that holds the scores for all frames of one track</p>
+<dt id="museval.aggregate.TrackStore">
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">TrackStore</code><span class="sig-paren">(</span><em class="sig-param">track_name</em>, <em class="sig-param">win=1</em>, <em class="sig-param">hop=1</em>, <em class="sig-param">frames_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds the metric scores for several frames of one track.</p>
+<p>This is the fundamental building block of other succeeding scores such as <cite>MethodStore</cite> and <cite>EvalStore</cite>. Where as the latter use pandas dataframes, this store is using a simple dict that can easily exported to json using the builtin tools</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">string</span></dt><dd><p>name of track, required.</p>
+<dt><strong>track_name</strong><span class="classifier">str</span></dt><dd><p>name of track.</p>
 </dd>
-<dt><strong>frames_agg</strong><span class="classifier">function or string</span></dt><dd><p>aggregation function for frames, defaults to <cite>median</cite></p>
+<dt><strong>win</strong><span class="classifier">float, optional</span></dt><dd><p>evaluation window duration in seconds, default to 1 second</p>
 </dd>
-<dt><strong>tracks_agg</strong><span class="classifier">function or string</span></dt><dd><p>aggregation function for frames, defaults to <cite>‘median’ = `np.nanmedian</cite></p>
+<dt><strong>hop</strong><span class="classifier">float, optional</span></dt><dd><p>hop length in seconds, defaults to 1 second</p>
 </dd>
-<dt><strong>tracks</strong><span class="classifier">list(TrackStore)</span></dt><dd></dd>
+<dt><strong>scores</strong><span class="classifier">Dict</span></dt><dd><p>Nested Dictionary of all scores</p>
+</dd>
+<dt><strong>frames_agg</strong><span class="classifier">callable or str</span></dt><dd><p>aggregation function for frames, defaults to <cite>‘median’ == `np.nanmedian</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="museval.aggregate.TrackStore.add_target">
+<code class="sig-name descname">add_target</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">target_name</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.add_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.add_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>add scores of target to the data store</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target_name</strong><span class="classifier">str</span></dt><dd><p>name of target to be added to list of targets</p>
+</dd>
+<dt><strong>values</strong><span class="classifier">List(Dict)</span></dt><dd><p>List of framewise data entries, see <cite>musdb.schema.json</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.TrackStore.json">
+<em class="property">property </em><code class="sig-name descname">json</code><a class="headerlink" href="#museval.aggregate.TrackStore.json" title="Permalink to this definition">¶</a></dt>
+<dd><p>formats the track scores as json string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>json_string</strong><span class="classifier">str</span></dt><dd><p>json dump of the scores dictionary</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.TrackStore.df">
+<em class="property">property </em><code class="sig-name descname">df</code><a class="headerlink" href="#museval.aggregate.TrackStore.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>return track scores as pandas dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">DataFrame</span></dt><dd><p>pandas dataframe object of track scores</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.TrackStore.validate">
+<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate scores against <cite>musdb.schema</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.TrackStore.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saved the track scores as json format</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="museval.aggregate.EvalStore">
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">EvalStore</code><span class="sig-paren">(</span><em class="sig-param">frames_agg='median'</em>, <em class="sig-param">tracks_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluation Storage that holds the scores for multiple tracks.</p>
+<p>This is based on a Pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">DataFrame</span></dt><dd><p>Pandas DataFrame</p>
+</dd>
+<dt><strong>frames_agg</strong><span class="classifier">str</span></dt><dd><p>aggregation function for frames supports <cite>mean</cite> and <cite>median</cite>, defaults to <cite>median</cite></p>
+</dd>
+<dt><strong>tracks_agg</strong><span class="classifier">str</span></dt><dd><p>aggregation function for frames supports <cite>mean</cite> and <cite>median</cite>, defaults to <a href="#id2"><span class="problematic" id="id3">`</span></a>’median’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.add_track">
+<code class="sig-name descname">add_track</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">track</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>add track score object to dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>track</strong><span class="classifier">TrackStore or DataFrame</span></dt><dd><p>track store object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.add_eval_dir">
+<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>add precomputed json folder to dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>path to evaluation results</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.agg_frames_scores">
+<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregates frames scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_aggregated_frames</strong><span class="classifier">GroupBy</span></dt><dd><p>data frame with frames aggregated by mean or median</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.agg_frames_tracks_scores">
+<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregates frames and track scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_aggregated_frames</strong><span class="classifier">GroupBy</span></dt><dd><p>data frame with frames and tracks aggregated by mean or median</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads pickled dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.EvalStore.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves pickled dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="museval.aggregate.MethodStore">
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">MethodStore</code><span class="sig-paren">(</span><em class="sig-param">frames_agg='median'</em>, <em class="sig-param">tracks_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds a pandas DataFrame that stores data for several methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">DataFrame</span></dt><dd><p>Pandas DataFrame</p>
+</dd>
+<dt><strong>frames_agg</strong><span class="classifier">str</span></dt><dd><p>aggregation function for frames supports <cite>mean</cite> and <cite>median</cite>, defaults to <cite>median</cite></p>
+</dd>
+<dt><strong>tracks_agg</strong><span class="classifier">str</span></dt><dd><p>aggregation function for frames supports <cite>mean</cite> and <cite>median</cite>, defaults to <a href="#id4"><span class="problematic" id="id5">`</span></a>’median’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.add_sisec18">
+<code class="sig-name descname">add_sisec18</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_sisec18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_sisec18" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds sisec18 participants results to DataFrame.</p>
+<p>Scores will be downloaded on demand.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.add_eval_dir">
+<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>add precomputed json folder to dataframe.</p>
+<p>The method name will be defined by the basename of provided path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>path to evaluation results</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.add_evalstore">
+<code class="sig-name descname">add_evalstore</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">method</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_evalstore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_evalstore" title="Permalink to this definition">¶</a></dt>
+<dd><p>add DataFrame</p>
+<p>The method name will be defined by the basename of provided path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>method</strong><span class="classifier">EvalStore</span></dt><dd><p>EvalStore object</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>name of method</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.agg_frames_scores">
+<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregates frames scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_aggregated_frames</strong><span class="classifier">GroupBy</span></dt><dd><p>data frame with frames and tracks aggregated by mean or median</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.agg_frames_tracks_scores">
+<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregates frames and track scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_aggregated_frames</strong><span class="classifier">GroupBy</span></dt><dd><p>data frame with frames and tracks aggregated by mean or median</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads pickled dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="museval.aggregate.MethodStore.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves pickled dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="museval.aggregate.json2df">
+<code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">json2df</code><span class="sig-paren">(</span><em class="sig-param">json_string</em>, <em class="sig-param">track_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#json2df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.json2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts json scores into pandas dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>json_string</strong><span class="classifier">str</span></dt><dd></dd>
+<dt><strong>track_name</strong><span class="classifier">str</span></dt><dd></dd>
 </dl>
 </dd>
 </dl>

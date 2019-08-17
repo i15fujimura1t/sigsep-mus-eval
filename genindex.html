@@ -155,6 +155,7 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -165,8 +166,34 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#museval.TrackStore.add_target">add_target() (museval.TrackStore method)</a>
+      <li><a href="index.html#museval.aggregate.EvalStore.add_eval_dir">add_eval_dir() (museval.aggregate.EvalStore method)</a>
+
+      <ul>
+        <li><a href="index.html#museval.aggregate.MethodStore.add_eval_dir">(museval.aggregate.MethodStore method)</a>
 </li>
+      </ul></li>
+      <li><a href="index.html#museval.aggregate.MethodStore.add_evalstore">add_evalstore() (museval.aggregate.MethodStore method)</a>
+</li>
+      <li><a href="index.html#museval.aggregate.MethodStore.add_sisec18">add_sisec18() (museval.aggregate.MethodStore method)</a>
+</li>
+      <li><a href="index.html#museval.aggregate.TrackStore.add_target">add_target() (museval.aggregate.TrackStore method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#museval.aggregate.EvalStore.add_track">add_track() (museval.aggregate.EvalStore method)</a>
+</li>
+      <li><a href="index.html#museval.aggregate.EvalStore.agg_frames_scores">agg_frames_scores() (museval.aggregate.EvalStore method)</a>
+
+      <ul>
+        <li><a href="index.html#museval.aggregate.MethodStore.agg_frames_scores">(museval.aggregate.MethodStore method)</a>
+</li>
+      </ul></li>
+      <li><a href="index.html#museval.aggregate.EvalStore.agg_frames_tracks_scores">agg_frames_tracks_scores() (museval.aggregate.EvalStore method)</a>
+
+      <ul>
+        <li><a href="index.html#museval.aggregate.MethodStore.agg_frames_tracks_scores">(museval.aggregate.MethodStore method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -193,7 +220,7 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#museval.TrackStore.df">df() (museval.TrackStore property)</a>
+      <li><a href="index.html#museval.aggregate.TrackStore.df">df() (museval.aggregate.TrackStore property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -227,14 +254,32 @@
 <h2 id="J">J</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#museval.TrackStore.json">json() (museval.TrackStore property)</a>
+      <li><a href="index.html#museval.aggregate.TrackStore.json">json() (museval.aggregate.TrackStore property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#museval.aggregate.json2df">json2df() (in module museval.aggregate)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#museval.aggregate.EvalStore.load">load() (museval.aggregate.EvalStore method)</a>
+
+      <ul>
+        <li><a href="index.html#museval.aggregate.MethodStore.load">(museval.aggregate.MethodStore method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#museval.aggregate.MethodStore">MethodStore (class in museval.aggregate)</a>
+</li>
       <li><a href="index.html#module-museval">museval (module)</a>
 </li>
       <li><a href="index.html#museval.cli.museval">museval() (in module museval.cli)</a>
@@ -261,15 +306,21 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#museval.TrackStore.save">save() (museval.TrackStore method)</a>
+      <li><a href="index.html#museval.aggregate.EvalStore.save">save() (museval.aggregate.EvalStore method)</a>
+
+      <ul>
+        <li><a href="index.html#museval.aggregate.MethodStore.save">(museval.aggregate.MethodStore method)</a>
 </li>
+        <li><a href="index.html#museval.aggregate.TrackStore.save">(museval.aggregate.TrackStore method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#museval.TrackStore">TrackStore (class in museval)</a>
+      <li><a href="index.html#museval.aggregate.TrackStore">TrackStore (class in museval.aggregate)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -280,7 +331,7 @@
       <li><a href="index.html#museval.metrics.validate">validate() (in module museval.metrics)</a>
 
       <ul>
-        <li><a href="index.html#museval.TrackStore.validate">(museval.TrackStore method)</a>
+        <li><a href="index.html#museval.aggregate.TrackStore.validate">(museval.aggregate.TrackStore method)</a>
 </li>
       </ul></li>
   </ul></td>
