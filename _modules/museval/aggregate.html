@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -148,17 +148,16 @@
             
   <h1>Source code for museval.aggregate</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">pandas</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">pandas.io.json</span> <span class="k">import</span> <span class="n">json_normalize</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">simplejson</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
-<span class="kn">from</span> <span class="nn">jsonschema</span> <span class="k">import</span> <span class="n">validate</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span> <span class="nn">jsonschema</span> <span class="kn">import</span> <span class="n">validate</span>
 <span class="kn">import</span> <span class="nn">museval</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="n">version</span> <span class="kn">import</span> <span class="nn">_version</span>
-<span class="kn">from</span> <span class="nn">decimal</span> <span class="k">import</span> <span class="n">Decimal</span> <span class="k">as</span> <span class="n">D</span>
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span> <span class="k">as</span> <span class="n">D</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
@@ -182,7 +181,7 @@
 <span class="sd">        aggregation function for frames, defaults to `&#39;median&#39; == `np.nanmedian`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_name</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_name</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
         
         <span class="nb">super</span><span class="p">(</span><span class="n">TrackStore</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win</span>
@@ -262,7 +261,7 @@
         <span class="c1"># encode and decode to json first</span>
         <span class="k">return</span> <span class="n">json2df</span><span class="p">(</span><span class="n">simplejson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print the frames_aggregated values instead of all frames</span>
 
 <span class="sd">        Returns</span>
@@ -315,7 +314,7 @@
 <span class="sd">        aggregation function for frames supports `mean` and `median`, defaults to `&#39;median&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">tracks_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">tracks_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">EvalStore</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span> <span class="o">=</span> <span class="n">frames_agg</span>
@@ -406,7 +405,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
         <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;Aggrated Scores (</span><span class="si">{}</span><span class="s2"> over frames, </span><span class="si">{}</span><span class="s2"> over tracks)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracks_agg</span>
@@ -434,7 +433,7 @@
 <span class="sd">    tracks_agg : str</span>
 <span class="sd">        aggregation function for frames supports `mean` and `median`, defaults to `&#39;median&#39;  </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">tracks_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">tracks_agg</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MethodStore</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frames_agg</span> <span class="o">=</span> <span class="n">frames_agg</span>
@@ -552,7 +551,7 @@
 <span class="sd">    track_name : str</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">df</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span>
         <span class="n">json_string</span><span class="p">[</span><span class="s1">&#39;targets&#39;</span><span class="p">],</span>
         <span class="p">[</span><span class="s1">&#39;frames&#39;</span><span class="p">],</span>
         <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
