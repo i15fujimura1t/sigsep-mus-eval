@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -48,7 +49,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> museval
+            <a href="#" class="icon icon-home" alt="Documentation Home"> museval
           
 
           
@@ -75,6 +76,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,6 +98,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -134,7 +137,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
       <li>museval</li>
     
@@ -161,9 +164,9 @@
 </div>
 <div class="section" id="module-museval">
 <span id="api-documentation"></span><h1>API documentation<a class="headerlink" href="#module-museval" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="museval.eval_dir">
-<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_dir</code><span class="sig-paren">(</span><em class="sig-param">reference_dir</em>, <em class="sig-param">estimates_dir</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">mode='v4'</em>, <em class="sig-param">win=1.0</em>, <em class="sig-param">hop=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_dir</span></em>, <em class="sig-param"><span class="n">estimates_dir</span></em>, <em class="sig-param"><span class="n">output_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'v4'</span></em>, <em class="sig-param"><span class="n">win</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute bss_eval metrics for two given directories assuming file
 names are identical for both, reference source and estimates.</p>
 <dl class="field-list simple">
@@ -191,9 +194,9 @@ names are identical for both, reference source and estimates.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.eval_mus_dir">
-<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_mus_dir</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">estimates_dir</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">ext='wav'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_mus_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_mus_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_mus_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset</span></em>, <em class="sig-param"><span class="n">estimates_dir</span></em>, <em class="sig-param"><span class="n">output_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ext</span><span class="o">=</span><span class="default_value">'wav'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_mus_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_mus_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run evaluation of musdb estimate dir</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -211,9 +214,9 @@ names are identical for both, reference source and estimates.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.eval_mus_track">
-<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_mus_track</code><span class="sig-paren">(</span><em class="sig-param">track</em>, <em class="sig-param">user_estimates</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">mode='v4'</em>, <em class="sig-param">win=1.0</em>, <em class="sig-param">hop=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_mus_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_mus_track" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">eval_mus_track</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span></em>, <em class="sig-param"><span class="n">user_estimates</span></em>, <em class="sig-param"><span class="n">output_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'v4'</span></em>, <em class="sig-param"><span class="n">win</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#eval_mus_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.eval_mus_track" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute all bss_eval metrics for the musdb track and estimated signals,
 given by a <cite>user_estimates</cite> dict.</p>
 <dl class="field-list simple">
@@ -241,9 +244,9 @@ given by a <cite>user_estimates</cite> dict.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.pad_or_truncate">
-<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">pad_or_truncate</code><span class="sig-paren">(</span><em class="sig-param">audio_reference</em>, <em class="sig-param">audio_estimates</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#pad_or_truncate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.pad_or_truncate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">pad_or_truncate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">audio_reference</span></em>, <em class="sig-param"><span class="n">audio_estimates</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#pad_or_truncate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.pad_or_truncate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pad or truncate estimates by duration of references:
 - If reference &gt; estimates: add zeros at the and of the estimated signal
 - If estimates &gt; references: truncate estimates to duration of references</p>
@@ -265,9 +268,9 @@ given by a <cite>user_estimates</cite> dict.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.evaluate">
-<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">references</em>, <em class="sig-param">estimates</em>, <em class="sig-param">win=44100</em>, <em class="sig-param">hop=44100</em>, <em class="sig-param">mode='v4'</em>, <em class="sig-param">padding=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.evaluate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.</code><code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">references</span></em>, <em class="sig-param"><span class="n">estimates</span></em>, <em class="sig-param"><span class="n">win</span><span class="o">=</span><span class="default_value">44100</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">44100</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'v4'</span></em>, <em class="sig-param"><span class="n">padding</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval.html#evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS_EVAL images evaluation using metrics module</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -332,9 +335,9 @@ version 2.</p>
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div></div></blockquote>
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.validate">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.validate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks that the input data to a metric are valid, and throws helpful
 errors if not.</p>
 <dl class="field-list simple">
@@ -349,9 +352,9 @@ errors if not.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.bss_eval">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em>, <em class="sig-param">window=88200</em>, <em class="sig-param">hop=66150.0</em>, <em class="sig-param">compute_permutation=False</em>, <em class="sig-param">filters_len=512</em>, <em class="sig-param">framewise_filters=False</em>, <em class="sig-param">bsseval_sources_version=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em>, <em class="sig-param"><span class="n">window</span><span class="o">=</span><span class="default_value">88200</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">66150.0</span></em>, <em class="sig-param"><span class="n">compute_permutation</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filters_len</span><span class="o">=</span><span class="default_value">512</span></em>, <em class="sig-param"><span class="n">framewise_filters</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">bsseval_sources_version</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS_EVAL version 4.</p>
 <blockquote>
 <div><p>Measurement of the separation quality for estimated source signals
@@ -454,49 +457,49 @@ Trans. on Audio, Speech and Language Processing, 2006.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.bss_eval_sources">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_sources</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em>, <em class="sig-param">compute_permutation=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_sources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_sources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em>, <em class="sig-param"><span class="n">compute_permutation</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_sources" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS Eval v3 bss_eval_sources</p>
 <p>Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code> with the right parameters.
 The call to this function is not recommended. See the description for the
 <code class="docutils literal notranslate"><span class="pre">bsseval_sources</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code>.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.bss_eval_sources_framewise">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_sources_framewise</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em>, <em class="sig-param">window=1323000</em>, <em class="sig-param">hop=661500</em>, <em class="sig-param">compute_permutation=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_sources_framewise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_sources_framewise" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_sources_framewise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em>, <em class="sig-param"><span class="n">window</span><span class="o">=</span><span class="default_value">1323000</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">661500</span></em>, <em class="sig-param"><span class="n">compute_permutation</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_sources_framewise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_sources_framewise" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS Eval v3 bss_eval_sources_framewise</p>
 <p>Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code> with the right parameters.
 The call to this function is not recommended. See the description for the
 <code class="docutils literal notranslate"><span class="pre">bsseval_sources</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code>.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.bss_eval_images">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_images</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em>, <em class="sig-param">compute_permutation=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_images" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em>, <em class="sig-param"><span class="n">compute_permutation</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS Eval v3 bss_eval_images</p>
 <p>Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code> with the right parameters.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.metrics.bss_eval_images_framewise">
-<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_images_framewise</code><span class="sig-paren">(</span><em class="sig-param">reference_sources</em>, <em class="sig-param">estimated_sources</em>, <em class="sig-param">window=1323000</em>, <em class="sig-param">hop=661500</em>, <em class="sig-param">compute_permutation=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_images_framewise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_images_framewise" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">bss_eval_images_framewise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference_sources</span></em>, <em class="sig-param"><span class="n">estimated_sources</span></em>, <em class="sig-param"><span class="n">window</span><span class="o">=</span><span class="default_value">1323000</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">661500</span></em>, <em class="sig-param"><span class="n">compute_permutation</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#bss_eval_images_framewise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.bss_eval_images_framewise" title="Permalink to this definition">¶</a></dt>
 <dd><p>BSS Eval v3 bss_eval_images_framewise</p>
 <p>Framewise computation of bss_eval_images.
 Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval</span></code> with the right parameters.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="museval.metrics.Framing">
-<em class="property">class </em><code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">Framing</code><span class="sig-paren">(</span><em class="sig-param">window</em>, <em class="sig-param">hop</em>, <em class="sig-param">length</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#Framing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.Framing" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">museval.metrics.</code><code class="sig-name descname">Framing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">hop</span></em>, <em class="sig-param"><span class="n">length</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/metrics.html#Framing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.metrics.Framing" title="Permalink to this definition">¶</a></dt>
 <dd><p>helper iterator class to do overlapped windowing</p>
 </dd></dl>
 
 </div>
-<span class="target" id="module-museval.aggregate"></span><dl class="class">
+<span class="target" id="module-museval.aggregate"></span><dl class="py class">
 <dt id="museval.aggregate.TrackStore">
-<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">TrackStore</code><span class="sig-paren">(</span><em class="sig-param">track_name</em>, <em class="sig-param">win=1</em>, <em class="sig-param">hop=1</em>, <em class="sig-param">frames_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">TrackStore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_name</span></em>, <em class="sig-param"><span class="n">win</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">hop</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">frames_agg</span><span class="o">=</span><span class="default_value">'median'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Holds the metric scores for several frames of one track.</p>
 <p>This is the fundamental building block of other succeeding scores such as <cite>MethodStore</cite> and <cite>EvalStore</cite>. Where as the latter use pandas dataframes, this store is using a simple dict that can easily exported to json using the builtin tools</p>
 <dl class="field-list simple">
@@ -515,9 +518,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.TrackStore.add_target">
-<code class="sig-name descname">add_target</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">target_name</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.add_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.add_target" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_target</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_name</span></em>, <em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.add_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.add_target" title="Permalink to this definition">¶</a></dt>
 <dd><p>add scores of target to the data store</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -531,7 +534,7 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.TrackStore.json">
 <em class="property">property </em><code class="sig-name descname">json</code><a class="headerlink" href="#museval.aggregate.TrackStore.json" title="Permalink to this definition">¶</a></dt>
 <dd><p>formats the track scores as json string</p>
@@ -545,7 +548,7 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.TrackStore.df">
 <em class="property">property </em><code class="sig-name descname">df</code><a class="headerlink" href="#museval.aggregate.TrackStore.df" title="Permalink to this definition">¶</a></dt>
 <dd><p>return track scores as pandas dataframe</p>
@@ -559,23 +562,23 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.TrackStore.validate">
-<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.validate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate scores against <cite>musdb.schema</cite></p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.TrackStore.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#TrackStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.TrackStore.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saved the track scores as json format</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="museval.aggregate.EvalStore">
-<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">EvalStore</code><span class="sig-paren">(</span><em class="sig-param">frames_agg='median'</em>, <em class="sig-param">tracks_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">EvalStore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames_agg</span><span class="o">=</span><span class="default_value">'median'</span></em>, <em class="sig-param"><span class="n">tracks_agg</span><span class="o">=</span><span class="default_value">'median'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluation Storage that holds the scores for multiple tracks.</p>
 <p>This is based on a Pandas DataFrame.</p>
 <dl class="field-list simple">
@@ -590,9 +593,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.add_track">
-<code class="sig-name descname">add_track</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">track</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_track" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_track</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_track" title="Permalink to this definition">¶</a></dt>
 <dd><p>add track score object to dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -604,9 +607,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.add_eval_dir">
-<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>add precomputed json folder to dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -618,9 +621,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.agg_frames_scores">
-<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>aggregates frames scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -632,9 +635,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.agg_frames_tracks_scores">
-<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>aggregates frames and track scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -646,9 +649,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.load">
-<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>loads pickled dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -659,9 +662,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.EvalStore.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#EvalStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.EvalStore.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>saves pickled dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -674,9 +677,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="museval.aggregate.MethodStore">
-<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">MethodStore</code><span class="sig-paren">(</span><em class="sig-param">frames_agg='median'</em>, <em class="sig-param">tracks_agg='median'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">MethodStore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames_agg</span><span class="o">=</span><span class="default_value">'median'</span></em>, <em class="sig-param"><span class="n">tracks_agg</span><span class="o">=</span><span class="default_value">'median'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Holds a pandas DataFrame that stores data for several methods.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
@@ -690,16 +693,16 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.add_sisec18">
-<code class="sig-name descname">add_sisec18</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_sisec18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_sisec18" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_sisec18</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_sisec18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_sisec18" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds sisec18 participants results to DataFrame.</p>
 <p>Scores will be downloaded on demand.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.add_eval_dir">
-<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_eval_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_eval_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_eval_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>add precomputed json folder to dataframe.</p>
 <p>The method name will be defined by the basename of provided path</p>
 <dl class="field-list simple">
@@ -712,9 +715,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.add_evalstore">
-<code class="sig-name descname">add_evalstore</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">method</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_evalstore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_evalstore" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_evalstore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.add_evalstore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.add_evalstore" title="Permalink to this definition">¶</a></dt>
 <dd><p>add DataFrame</p>
 <p>The method name will be defined by the basename of provided path</p>
 <dl class="field-list simple">
@@ -729,9 +732,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.agg_frames_scores">
-<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">agg_frames_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>aggregates frames scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -743,9 +746,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.agg_frames_tracks_scores">
-<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">agg_frames_tracks_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.agg_frames_tracks_scores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.agg_frames_tracks_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>aggregates frames and track scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -757,9 +760,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.load">
-<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>loads pickled dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -770,9 +773,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="museval.aggregate.MethodStore.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#MethodStore.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.MethodStore.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>saves pickled dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -785,9 +788,9 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.aggregate.json2df">
-<code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">json2df</code><span class="sig-paren">(</span><em class="sig-param">json_string</em>, <em class="sig-param">track_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#json2df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.json2df" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.aggregate.</code><code class="sig-name descname">json2df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json_string</span></em>, <em class="sig-param"><span class="n">track_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/aggregate.html#json2df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.aggregate.json2df" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts json scores into pandas dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -799,15 +802,15 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 </dl>
 </dd></dl>
 
-<span class="target" id="module-museval.cli"></span><dl class="function">
+<span class="target" id="module-museval.cli"></span><dl class="py function">
 <dt id="museval.cli.bsseval">
-<code class="sig-prename descclassname">museval.cli.</code><code class="sig-name descname">bsseval</code><span class="sig-paren">(</span><em class="sig-param">inargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/cli.html#bsseval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.cli.bsseval" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.cli.</code><code class="sig-name descname">bsseval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/cli.html#bsseval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.cli.bsseval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generic cli app for bsseval results. Expects two folder with</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="museval.cli.museval">
-<code class="sig-prename descclassname">museval.cli.</code><code class="sig-name descname">museval</code><span class="sig-paren">(</span><em class="sig-param">inargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/cli.html#museval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.cli.museval" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">museval.cli.</code><code class="sig-name descname">museval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/museval/cli.html#museval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#museval.cli.museval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Commandline interface for museval evaluation tools</p>
 </dd></dl>
 
@@ -824,11 +827,19 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Inria (Fabian-Robert Stöter, Antoine Liutkus)
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -839,7 +850,6 @@ Wrapper to <code class="docutils literal notranslate"><span class="pre">bss_eval
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
